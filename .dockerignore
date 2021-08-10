@@ -1,0 +1,2 @@
+# Ignore node_modules folder for automatically generated dependencies.
+node_modules/
