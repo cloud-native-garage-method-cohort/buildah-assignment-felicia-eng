@@ -6,6 +6,10 @@ spec:
   params:
     - name: source-repo
       value: https://github.com/cloud-native-garage-method-cohort/buildah-assignment-felicia-eng
+    - name: image-repo
+      value: quay.io/felicia_eng1/express-sample-app
+    - name: app-name
+      value: express-sample-app
   serviceAccountName: build-bot
   pipelineRef:
     name: buildah-pipeline

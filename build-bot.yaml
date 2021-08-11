@@ -1,15 +1,16 @@
 apiVersion: v1
 imagePullSecrets:
-- name: build-bot-dockercfg-w62z8
+- name: build-bot-dockercfg-62ph5
 kind: ServiceAccount
 metadata:
-  creationTimestamp: "2021-08-10T11:43:27Z"
+  creationTimestamp: "2021-08-11T07:02:03Z"
   name: build-bot
-  namespace: npm-felicia-eng
-  resourceVersion: "6882925"
-  selfLink: /api/v1/namespaces/npm-felicia-eng/serviceaccounts/build-bot
-  uid: db5e9ab9-473c-4dec-a2f5-f4f624394d2f
+  namespace: kustomize-felicia-eng
+  resourceVersion: "7337703"
+  selfLink: /api/v1/namespaces/kustomize-felicia-eng/serviceaccounts/build-bot
+  uid: c842e8dd-27c9-4d31-b14d-041e5f8489d1
 secrets:
-- name: build-bot-token-g6g6h
-- name: build-bot-dockercfg-w62z8
+- name: build-bot-token-57gdr
+- name: build-bot-dockercfg-62ph5
 - name: quay-io-credentials
+

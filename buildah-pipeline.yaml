@@ -58,7 +58,7 @@ spec:
         - run-tests
       params:
         - name: IMAGE
-          value: "quay.io/felicia_eng1/express-sample-app:$(tasks.clone-repository.results.commit)"
+          value: "$(params.image-repo):$(tasks.clone-repository.results.commit)"
       workspaces:
         - name: source
           workspace: pipeline-shared-data
@@ -82,3 +82,18 @@ spec:
       workspaces:
         - name: source
           workspace: pipeline-shared-data
+    - name: try-to-deploy
+      taskRef:
+        kind: Task
+        name: try-to-deploy
+      params:
+        - name: app-name
+          value: "$(params.app-name)"
+        - name: app-namespace
+          value: "$(context.pipelineRun.namespace)"
+      workspaces:
+        - name: source
+          workspace: pipeline-shared-data
+      runAfter:
+        - kustomize
+
