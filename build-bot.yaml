@@ -1,0 +1,15 @@
+apiVersion: v1
+imagePullSecrets:
+- name: build-bot-dockercfg-w62z8
+kind: ServiceAccount
+metadata:
+  creationTimestamp: "2021-08-10T11:43:27Z"
+  name: build-bot
+  namespace: npm-felicia-eng
+  resourceVersion: "6882925"
+  selfLink: /api/v1/namespaces/npm-felicia-eng/serviceaccounts/build-bot
+  uid: db5e9ab9-473c-4dec-a2f5-f4f624394d2f
+secrets:
+- name: build-bot-token-g6g6h
+- name: build-bot-dockercfg-w62z8
+- name: quay-io-credentials

@@ -1,0 +1,51 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  annotations:
+    app.openshift.io/runtime: nodejs
+  labels:
+    app: nodejs-pipeline
+    app.kubernetes.io/instance: nodejs-pipeline-instance
+    app.kubernetes.io/name: nodejs-pipeline
+  name: buildah-pipeline
+spec:
+  workspaces:
+    - name: pipeline-shared-data
+      description: |
+        This workspace stores the cloned repository and is available to all steps
+  tasks:
+    - name: clone-repository
+      taskRef:
+        kind: ClusterTask
+        name: git-clone
+      params:
+        - name: url
+          value: https://github.com/cloud-native-garage-method-cohort/buildah-assignment-felicia-eng
+      workspaces:
+        - name: output
+          workspace: pipeline-shared-data
+    - name: run-tests
+      taskRef:
+        name: npm
+      workspaces:
+        - name: source
+          workspace: pipeline-shared-data
+      params:
+        - name: ARGS
+          value:
+            - install-ci-test
+      runAfter:
+        - clone-repository
+    - name: build-image
+      taskRef:
+        kind: ClusterTask
+        name: buildah
+      runAfter:
+        - run-tests
+      params:
+        - name: IMAGE
+          value: "quay.io/felicia_eng1/express-sample-app:$(tasks.clone-repository.results.commit)"
+      workspaces:
+        - name: source
+          workspace: pipeline-shared-data
+          
