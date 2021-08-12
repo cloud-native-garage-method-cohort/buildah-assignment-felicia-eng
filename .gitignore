@@ -1,11 +1,5 @@
 # Ignore automatically created node modules.
 node_modules/
 
-# Don't include secrets.
-quay-io-credentials.yml
-
-# Test files.
-webhook-manual-payload.json
-
 # Don't commit pipeline yamls.
 tekton/
