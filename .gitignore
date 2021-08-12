@@ -6,3 +6,12 @@ quay-io-credentials.yml
 
 # Test files.
 webhook-manual-payload.json
+
+# Don't commit pipeline yamls.
+vcs-trigger*
+try-to-deploy.yaml
+role-deployer.yaml
+kustomize-task.yaml
+build-bot.yaml
+buildah-pipeline.yaml
+buildah-pipelinerun.yaml
