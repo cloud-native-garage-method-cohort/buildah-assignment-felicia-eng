@@ -1,8 +1,2 @@
 # Ignore node_modules folder for automatically generated dependencies.
 node_modules/
-
-# Don't include secrets.
-quay-io-credentials.yml
-
-# Test files.
-webhook-manual-payload.json
